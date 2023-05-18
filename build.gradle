@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.rutatalk'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
@@ -28,6 +28,23 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	// swagger
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+	
+	// lombok
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+	
+	// XML -> JSON 관련 implementation
+	implementation group: 'org.json', name: 'json', version: '20210307'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.9.0'
 }
 
 tasks.named('test') {
