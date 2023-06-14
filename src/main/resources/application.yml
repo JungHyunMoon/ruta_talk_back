@@ -18,6 +18,23 @@ spring:
       user:
           name: user
           password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type: trace
+    
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
