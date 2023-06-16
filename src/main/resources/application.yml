@@ -6,18 +6,16 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/myroom?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/rutatalk?characterEncoding=UTF-8
     username: root
     password: root
   mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
     static-path-pattern: /static/**
     view:
       prefix: /WEB-INF/jsp
       suffix: .jsp   
-  security:
-      user:
-          name: user
-          password: 1234
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
