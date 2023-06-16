@@ -3,23 +3,32 @@ package com.rutatalk.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import lombok.Value;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
 
-	  @Bean
-	  public OpenAPI openAPI() {
-	    Info info = new Info()
-	        .title("타이틀 입력")
-	        .version("v1.6.6")
-	        .description("API에 대한 설명 부분");
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.OAS_30)
+                .useDefaultResponseMessages(false)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.rutatalk.*"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
+    }
 
-	    return new OpenAPI()
-	        .components(new Components())
-	        .info(info);
-	  }
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("rutatalk swagger")
+                .description("rutatalk의 swagger입니다")
+                .version("1.0")
+                .build();
+    }
 }
