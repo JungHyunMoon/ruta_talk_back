@@ -18,7 +18,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.rutatalk.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.rutatalk.user"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -28,7 +28,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("rutatalk swagger")
                 .description("rutatalk의 swagger입니다")
-                .version("1.0")
+                .version("3.0")
                 .build();
     }
 }

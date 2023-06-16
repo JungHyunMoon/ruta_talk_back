@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rutatalk.user.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.log4j.Log4j2;
 
-@RequestMapping("/user")
+@Api(value = "SwaggerControllerV1")
+@RequestMapping("/v1/api")
 @RestController
 @Log4j2
 public class UserRestController {
@@ -27,10 +31,11 @@ public class UserRestController {
 	 * @param password
 	 * @return
 	 */
-	@PostMapping("/sign-in")
+	@ApiOperation(value = "sample", notes = "테스트")
+	@PostMapping(value = "/sign-in")
 	public Map<String, Object> signIn(
-			@RequestParam("loginId") String loginId,
-			@RequestParam("password") String password) {
+			@ApiParam(value = "아이디", required = true, example = "test") @RequestParam("loginId") String loginId,
+			@ApiParam(value = "비번", required = true, example = "123") @RequestParam("password") String password) {
 		Map<String, Object> result = new HashMap<>();
 		
 		log.info(loginId + " Restconroller 로그인아이디 입니다.");
