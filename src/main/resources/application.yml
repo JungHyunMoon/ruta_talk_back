@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/rutatalk?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/myroom?characterEncoding=UTF-8
     username: root
     password: root
   mvc:
@@ -16,6 +16,27 @@ spring:
     view:
       prefix: /WEB-INF/jsp
       suffix: .jsp   
+  security:
+      user:
+          name: user
+          password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type: trace
+    
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
