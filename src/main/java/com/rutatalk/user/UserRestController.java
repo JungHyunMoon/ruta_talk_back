@@ -31,7 +31,7 @@ public class UserRestController {
 	 * @param password
 	 * @return
 	 */
-	@ApiOperation(value = "sample", notes = "테스트")
+	@ApiOperation(value = "signIn", notes = "로그인 테스트")
 	@PostMapping(value = "/sign-in")
 	public Map<String, Object> signIn(
 			@ApiParam(value = "아이디", required = true, example = "test") @RequestParam("loginId") String loginId,
@@ -50,6 +50,29 @@ public class UserRestController {
 			result.put("code", 1100);
 			result.put("result", "유저를 찾을 수 없습니다.");
 		}
+		return result;
+	}
+	
+	@ApiOperation(value = "signUp", notes = "회원가입 테스트")
+	@PostMapping(value = "/sign-up")
+	public Map<String, Object> signUp(
+			@ApiParam(value = "아이디", required = true, example = "test") @RequestParam("loginId") String loginId,
+			@ApiParam(value = "비번", required = true, example = "123") @RequestParam("password") String password,
+			@ApiParam(value = "닉네임", required = true, example = "nickname") @RequestParam("nickname") String nickname,
+			@ApiParam(value = "이메일", required = true, example = "email") @RequestParam("email") String email
+			) {
+		Map<String, Object> result = new HashMap<>();
+		
+		int row = userService.addUser(loginId, password, nickname, email);
+		
+		if(row > 0) {
+			result.put("code", 5000);
+			result.put("result", "올바른 요청입니다.");
+		} else {
+			result.put("code", 1000);
+			result.put("result", "잘못된 요청입니다.");
+		}
+		
 		return result;
 	}
 }

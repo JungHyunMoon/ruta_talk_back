@@ -39,5 +39,28 @@ public class UserService {
 			return 0;
 		}
 	}
+	
+	@Transactional
+	public int addUser(String loginId, String password, String nickname, String email) {
+		
+		// password 암호화
+		password = passwordEncoder.encode(password);
+		
+		User user1 = new User();
+		user1.setLoginId(loginId);
+		user1.setPassword(password);
+		user1.setNickname(nickname);
+		user1.setEmail(email);
+		
+		log.info(user1 + "BO 부분 회원가입");
+		
+		User result = userRepository.save(user1);
+		
+		if (result != null) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 
 }
