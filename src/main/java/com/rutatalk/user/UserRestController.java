@@ -14,6 +14,8 @@ import com.rutatalk.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.log4j.Log4j2;
 
 @Api(value = "SwaggerControllerV1")
@@ -32,10 +34,15 @@ public class UserRestController {
 	 * @return
 	 */
 	@ApiOperation(value = "signIn", notes = "로그인 테스트")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "ok"),
+		@ApiResponse(code = 500, message = "server error"),
+		@ApiResponse(code = 404, message = "not found")
+	})
 	@PostMapping(value = "/sign-in")
 	public Map<String, Object> signIn(
-			@ApiParam(value = "아이디", required = true, example = "test") @RequestParam("loginId") String loginId,
-			@ApiParam(value = "비번", required = true, example = "123") @RequestParam("password") String password) {
+			@ApiParam(value = "아이디", required = true, example = "user123") @RequestParam("loginId") String loginId,
+			@ApiParam(value = "비번", required = true, example = "password") @RequestParam("password") String password) {
 		Map<String, Object> result = new HashMap<>();
 		
 		log.info(loginId + " Restconroller 로그인아이디 입니다.");
@@ -54,6 +61,11 @@ public class UserRestController {
 	}
 	
 	@ApiOperation(value = "signUp", notes = "회원가입 테스트")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "ok"),
+		@ApiResponse(code = 500, message = "server error"),
+		@ApiResponse(code = 404, message = "not found")
+	})
 	@PostMapping(value = "/sign-up")
 	public Map<String, Object> signUp(
 			@ApiParam(value = "아이디", required = true, example = "test") @RequestParam("loginId") String loginId,
