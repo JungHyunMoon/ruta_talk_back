@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/myroom?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/rutatalk?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     username: root
     password: root
   mvc:
