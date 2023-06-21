@@ -45,7 +45,7 @@
 		      {
 		        "lat": 37.55518388656961,
 		        "lng": 126.92926237742505,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 35.20618517638034,
@@ -120,7 +120,7 @@
 		      {
 		        "lat": 37.50380641844987,
 		        "lng": 127.02130716617751,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.55155704387368,
@@ -220,7 +220,7 @@
 		      {
 		        "lat": 35.23773491330953,
 		        "lng": 129.08371037429578,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.524297321304886,
@@ -295,7 +295,7 @@
 		      {
 		        "lat": 37.53338631541601,
 		        "lng": 127.00615481678061,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.413461468258156,
@@ -370,7 +370,7 @@
 		      {
 		        "lat": 35.25685847585025,
 		        "lng": 128.59912605060455,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 33.509258155694496,
@@ -470,7 +470,7 @@
 		      {
 		        "lat": 37.7239966558994,
 		        "lng": 127.0478671731854,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 35.86680171505329,
@@ -495,7 +495,7 @@
 		      {
 		        "lat": 37.063839948992644,
 		        "lng": 127.06856523030079,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.34344643728643,
@@ -520,7 +520,7 @@
 		      {
 		        "lat": 36.082394201323524,
 		        "lng": 129.40330471725923,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.51043665598106,
@@ -585,7 +585,7 @@
 		      {
 		        "lat": 37.40157536691968,
 		        "lng": 127.11717457214067,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 36.95191038001258,
@@ -595,7 +595,7 @@
 		      {
 		        "lat": 37.491526492971346,
 		        "lng": 126.85463749525812,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 36.124356479753196,
@@ -605,7 +605,7 @@
 		      {
 		        "lat": 37.15715169307048,
 		        "lng": 128.15853461363773,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.5808156608605,
@@ -615,7 +615,7 @@
 		      {
 		        "lat": 37.46931787249714,
 		        "lng": 126.89904775044873,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 35.52195614910054,
@@ -625,7 +625,7 @@
 		      {
 		        "lat": 37.58625703195563,
 		        "lng": 126.9496035206742,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.28463639199199,
@@ -635,7 +635,7 @@
 		      {
 		        "lat": 35.534169458631226,
 		        "lng": 129.31169021536095,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 37.553341234194285,
@@ -645,7 +645,7 @@
 		      {
 		        "lat": 37.62293367990081,
 		        "lng": 126.83445005122417,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      },
 		      {
 		        "lat": 35.5272027005698,
@@ -655,23 +655,19 @@
 		      {
 		        "lat": 35.180032285898854,
 		        "lng": 128.06954509175367,
-		        "imageUrl" : "/static/image/test.png"
+		        "imageUrl" : "/static/image/test2.png"
 		      }
 		    ];
 		
-		var imageSrc = '/static/image/test.png', // 마커이미지의 주소입니다    
-		    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-		    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-	      
-		// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-		    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 
 		var markers = positions.map(function(position) { // 마커를 배열 단위로 묶음
+			var imageSrc = position.imageUrl, // 마커이미지의 주소입니다    
+			    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+			    imageOption = {offset: new kakao.maps.Point(27, 69)};
 			return new kakao.maps.Marker({
 				map: map, // 마커를 표시할 지도,
 				position : new kakao.maps.LatLng(position.lat, position.lng)
-				, image : markerImage  // 마커 이미지 
+				, image : new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)  // 마커 이미지 
 			});
 		});
 		
