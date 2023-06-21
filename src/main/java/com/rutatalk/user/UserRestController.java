@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.extern.log4j.Log4j2;
 
 @Api(value = "SwaggerControllerV1")
-@RequestMapping("/v1/api")
+@RequestMapping("/v1/api/user")
 @RestController
 @Log4j2
 public class UserRestController {
