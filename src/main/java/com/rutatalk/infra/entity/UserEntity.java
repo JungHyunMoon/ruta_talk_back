@@ -1,4 +1,4 @@
-package com.rutatalk.board.entity;
+package com.rutatalk.infra.entity;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
 import lombok.Getter;
@@ -17,33 +18,33 @@ import lombok.Getter;
 @Data
 @Entity
 @Getter
-@Table(name="board")
-public class Board {
+@Table(name="user")
+public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@Column(name = "loginId", nullable = false)
+	private String loginId;
 	
-	@Column(name = "schduleId", nullable = false)
-	private Long schduleId;
+	@Column(name = "password", nullable = false)
+	private String password;
+
+	@Column(name = "nickname", nullable = false)
+	private String nickname;
+
+	@Column(name = "profileUrl")
+	private String profileUrl;
 	
-	@Column(name = "userId", nullable = false)
-	private Long userId;
-	
-	@Column(name = "subject", nullable = false)
-	private String subject;
-	
-	@Column(name = "content", nullable = false)
-	private String content;
-	
-	@Column(name = "imageUrl", nullable = false)
-	private String imageUrl;
+	@Column(name = "email", nullable = false)
+	private String email;
 	
 	@Column(name = "createdAt")
 	@CreationTimestamp
 	private Date createdAt;
 	
 	@Column(name = "updatedAt")
-	@CreationTimestamp
+	@UpdateTimestamp
 	private Date updatedAt;
 	
 }

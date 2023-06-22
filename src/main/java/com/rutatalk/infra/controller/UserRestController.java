@@ -1,4 +1,4 @@
-package com.rutatalk.user;
+package com.rutatalk.infra.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rutatalk.user.service.UserService;
+import com.rutatalk.infra.service.UserService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

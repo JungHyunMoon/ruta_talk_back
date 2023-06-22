@@ -1,4 +1,4 @@
-package com.rutatalk.user.entity;
+package com.rutatalk.infra.entity;
 
 import java.util.Date;
 
@@ -18,27 +18,28 @@ import lombok.Getter;
 @Data
 @Entity
 @Getter
-@Table(name="user")
-public class User {
+@Table(name = "schedule")
+public class ScheduleEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@Column(name = "loginId", nullable = false)
-	private String loginId;
 	
-	@Column(name = "password", nullable = false)
-	private String password;
-
-	@Column(name = "nickname", nullable = false)
-	private String nickname;
-
-	@Column(name = "profileUrl")
-	private String profileUrl;
+	@Column(name = "chatRoomId", nullable = false)
+	private Long chatRoomId;
 	
-	@Column(name = "email", nullable = false)
-	private String email;
+	@Column(name = "title", nullable = false)
+	private String title;
 	
+	@Column(name = "region", nullable = false)
+	private String region;
+
+	@Column(name = "startDate", nullable = false)
+	private Date startDate;
+	
+	@Column(name = "endDate", nullable = false)
+	private Date endDate;
+
 	@Column(name = "createdAt")
 	@CreationTimestamp
 	private Date createdAt;
@@ -46,5 +47,4 @@ public class User {
 	@Column(name = "updatedAt")
 	@UpdateTimestamp
 	private Date updatedAt;
-	
 }

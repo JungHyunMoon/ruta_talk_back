@@ -1,12 +1,12 @@
-package com.rutatalk.user.service;
+package com.rutatalk.infra.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rutatalk.user.entity.User;
-import com.rutatalk.user.repository.UserRepository;
+import com.rutatalk.infra.entity.UserEntity;
+import com.rutatalk.infra.repository.UserRepository;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -24,7 +24,7 @@ public class UserService {
 	public int getUserByLoginIdPassword(String loginId, String password) {
 		
 		log.info(loginId + " BO 부분 로그인아이디 입니다.");
-		User user1 = userRepository.findByLoginId(loginId);
+		UserEntity user1 = userRepository.findByLoginId(loginId);
 		log.info(user1 + " 레퍼지토리에서 나온 값입니다.");
 		
 		/*
@@ -46,7 +46,7 @@ public class UserService {
 		// password 암호화
 		password = passwordEncoder.encode(password);
 		
-		User user1 = new User();
+		UserEntity user1 = new UserEntity();
 		user1.setLoginId(loginId);
 		user1.setPassword(password);
 		user1.setNickname(nickname);
@@ -54,7 +54,7 @@ public class UserService {
 		
 		log.info(user1 + "BO 부분 회원가입");
 		
-		User result = userRepository.save(user1);
+		UserEntity result = userRepository.save(user1);
 		
 		if (result != null) {
 			return 1;

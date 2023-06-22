@@ -1,11 +1,11 @@
-package com.rutatalk.board.service;
+package com.rutatalk.infra.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rutatalk.board.entity.Board;
-import com.rutatalk.board.repository.BoardRepository;
+import com.rutatalk.infra.entity.BoardEntity;
+import com.rutatalk.infra.repository.BoardRepository;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -18,7 +18,7 @@ public class BoardService {
 	
 	@Transactional(readOnly = true)
 	public void createBoard(Long scheduleID, Long userId, String subject, String content, String imageUrl) {
-		Board board = new Board();
+		BoardEntity board = new BoardEntity();
 //		board.setChatRoomId(schedule.getChatRoomId()); // schdule 객체에서 roomId 추출
 		board.setSchduleId((long) 1); // test code
 		board.setUserId(userId);

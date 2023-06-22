@@ -1,4 +1,4 @@
-package com.rutatalk.schedule;
+package com.rutatalk.infra.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rutatalk.schedule.entity.Schedule;
-import com.rutatalk.schedule.service.ScheduleService;
+import com.rutatalk.infra.entity.ScheduleEntity;
+import com.rutatalk.infra.service.ScheduleService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -37,7 +37,7 @@ public class ScheduleRestController {
 	@PostMapping(value = "/{roomId}")
 	public Map<String, Object> getSchedulesByRoomId(
 			@ApiParam(value = "방 아이디", required = true) @RequestParam("chatRoomId") Long chatRoomId) {
-		List<Schedule> schedules = scheduleService.getSchedulesByRoomId(chatRoomId);
+		List<ScheduleEntity> schedules = scheduleService.getSchedulesByRoomId(chatRoomId);
 		Map<String, Object> result = new HashMap<>();
 		result.put("schedules", schedules);
 		
