@@ -1,4 +1,4 @@
-package com.rutatalk.infra.controller;
+package com.rutatalk.infra.controller.api;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/v1/api/user")
 @RestController
 @Log4j2
-public class UserRestController {
+public class UserApiController {
 	
 	@Autowired
 	private UserService userService;
