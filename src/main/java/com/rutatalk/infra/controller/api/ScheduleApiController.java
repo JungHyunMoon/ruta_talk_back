@@ -1,4 +1,4 @@
-package com.rutatalk.infra.controller;
+package com.rutatalk.infra.controller.api;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "ScheduleRestControllerV1")
 @RequestMapping("/v1/api/schedule")
 @RestController
-public class ScheduleRestController {
+public class ScheduleApiController {
 
 	@Autowired
 	private ScheduleService scheduleService;

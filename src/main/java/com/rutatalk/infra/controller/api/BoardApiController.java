@@ -1,14 +1,16 @@
-package com.rutatalk.infra.controller;
+package com.rutatalk.infra.controller.api;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rutatalk.infra.entity.BoardEntity;
+import com.rutatalk.infra.entity.ScheduleEntity;
 import com.rutatalk.infra.service.BoardService;
 
 import io.swagger.annotations.Api;
@@ -22,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/v1/api/board")
 @RestController
 @Log4j2
-public class BoardRestController {
+public class BoardApiController {
 
 	@Autowired
 	private BoardService boardService;
@@ -43,18 +45,13 @@ public class BoardRestController {
 	})
 	@PostMapping(value = "/board")
 	public Map<String, Object> createBoard(
-			@ApiParam(value = "일정", required = true, example = "게시글 일정") @RequestParam("schduleId") Long scheduleId,
-			@ApiParam(value = "제목", required = true, example = "게시글 제목") @RequestParam("subject") String subject,
-			@ApiParam(value = "내용", required = true, example = "게시글 내용") @RequestParam("content") String content,
-			@ApiParam(value = "사진", required = true, example = "게시글 사진") @RequestParam("imageUrl") String imageUrl
+			@ApiParam(value = "게시글", required = true, example = "게시글 Entity") @RequestBody BoardEntity boardEntity
 			) {
 		
-		// userId는 JWT 토큰에서 가져올 예정
-		Long userId = (long) 1;
-		log.info(userId + " Restconroller 유저아이디 입니다.");
+		log.info(boardEntity.getUserId() + " Restconroller 유저아이디 입니다.");
 		
 		// schedule 객채를 통채로 parameter로 가져올지 논의
-		boardService.createBoard(scheduleId, userId, subject, content, imageUrl);
+		boardService.createBoard(boardEntity);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", "5000");
 		result.put("result", "글이 성공적으로 게시되었습니다");

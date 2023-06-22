@@ -17,15 +17,9 @@ public class BoardService {
 	private BoardRepository boardRepository;
 	
 	@Transactional(readOnly = true)
-	public void createBoard(Long scheduleID, Long userId, String subject, String content, String imageUrl) {
-		BoardEntity board = new BoardEntity();
-//		board.setChatRoomId(schedule.getChatRoomId()); // schdule 객체에서 roomId 추출
-		board.setSchduleId((long) 1); // test code
-		board.setUserId(userId);
-		board.setContent(content);
-		board.setSubject(subject);
-		board.setImageUrl(imageUrl); // file 기능 아직 미구현
-		boardRepository.save(board);
+	public void createBoard(BoardEntity boardEntity) {
+		
+		boardRepository.save(boardEntity);
 		
 	}
 }
