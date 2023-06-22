@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rutatalk.infra.entity.BoardEntity;
-import com.rutatalk.infra.entity.ScheduleEntity;
 import com.rutatalk.infra.service.BoardService;
 
 import io.swagger.annotations.Api;
@@ -55,6 +56,18 @@ public class BoardApiController {
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", "5000");
 		result.put("result", "글이 성공적으로 게시되었습니다");
+		return result;
+	};
+	
+	@ApiOperation(value = "deleteBoard", notes = "must need boardId")
+	@DeleteMapping(value = "{boardId}")
+	public Map<String, Object> deleteBoard(
+			@ApiParam(value = "게시글 ID", required = true, example = "1") @PathVariable("boardId") Long boardId
+			) {
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 5000);
+		result.put("result", "글이 성공적으로 삭제되었습니다");
 		return result;
 	}
 	

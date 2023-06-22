@@ -58,7 +58,7 @@ public class UserApiController {
 			result.put("result", "유저를 찾을 수 없습니다.");
 		}
 		return result;
-	}
+	};
 	
 	@ApiOperation(value = "signUp", notes = "회원가입 테스트")
 	@ApiResponses({
