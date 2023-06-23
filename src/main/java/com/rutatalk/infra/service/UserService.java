@@ -24,16 +24,10 @@ public class UserService {
 	public int getUserByLoginIdPassword(String loginId, String password) {
 		
 		log.info(loginId + " BO 부분 로그인아이디 입니다.");
-		UserEntity user1 = userRepository.findByLoginId(loginId);
-		log.info(user1 + " 레퍼지토리에서 나온 값입니다.");
+		UserEntity user = userRepository.findByLoginId(loginId);
+		log.info(user + " 레퍼지토리에서 나온 값입니다.");
 		
-		/*
-		String encodedPassword = user1.getPassword();
-		log.info(encodedPassword + " encodedPassword 나옴");
-		log.info(password + " password파라미터값 나옴");
-		*/
-		
-		if(user1 != null && passwordEncoder.matches(password, user1.getPassword())) {
+		if(user != null && passwordEncoder.matches(password, user.getPassword())) {
 			return 1;
 		} else {
 			return 0;
