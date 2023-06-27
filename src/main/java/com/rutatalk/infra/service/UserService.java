@@ -1,7 +1,7 @@
 package com.rutatalk.infra.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +16,13 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
+
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Transactional
+	public UserEntity getUserByLoginId(String loginId){
+		return userRepository.findByLoginId(loginId);
+	}
 	@Transactional(readOnly = true)
 	public int getUserByLoginIdPassword(String loginId, String password) {
 		
@@ -33,7 +36,7 @@ public class UserService {
 		log.info(password + " password파라미터값 나옴");
 		*/
 		
-		if(user1 != null && passwordEncoder.matches(password, user1.getPassword())) {
+		if(user1 != null && bCryptPasswordEncoder.matches(password, user1.getPassword())) {
 			return 1;
 		} else {
 			return 0;
@@ -44,7 +47,7 @@ public class UserService {
 	public int addUser(String loginId, String password, String nickname, String email) {
 		
 		// password 암호화
-		password = passwordEncoder.encode(password);
+		password = bCryptPasswordEncoder.encode(password);
 		
 		UserEntity user1 = new UserEntity();
 		user1.setLoginId(loginId);

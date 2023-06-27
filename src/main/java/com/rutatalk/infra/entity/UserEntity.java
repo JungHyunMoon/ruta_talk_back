@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.rutatalk.infra.entity.enums.Role;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -46,5 +47,8 @@ public class UserEntity {
 	@Column(name = "updatedAt")
 	@UpdateTimestamp
 	private Date updatedAt;
+
+	@Column(name = "role")
+	private Role role;
 	
 }

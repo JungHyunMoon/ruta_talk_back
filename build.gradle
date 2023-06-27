@@ -25,8 +25,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	// 절대 업그레이드를 하지마 절대절대 하지마 3.0.1 로 놔둬 절대
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -52,9 +56,16 @@ dependencies {
 	
 	// JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    
-   // swagger
-   implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	// swagger
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+	//thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// jjwt 0.9.1 -> 0.11.5로 버전업
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
 	
 }
 
