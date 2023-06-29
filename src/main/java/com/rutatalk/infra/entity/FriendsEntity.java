@@ -19,28 +19,20 @@ import lombok.Getter;
 @Entity
 @Getter
 @Builder
-@Table(name = "chat_room")
-public class ChatRoomEntity {
+@Table(name = "friends")
+public class FriendsEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-//	@Column(name = "roomCode", nullable = false)
-//	private Long roomCode;
-
-	@Column(name = "name", nullable = false)
-	private String name;
-
-	@Column(name = "roomImageUrl", nullable = true)
-	private String roomImageUrl;
-
+	
+	@Column(name = "userId", nullable = false)
+	private Long userId;
+	
+	@Column(name = "followId", nullable = false)
+	private Long followId;
+	
 	@Column(name = "createdAt")
 	@CreationTimestamp
 	private Date createdAt;
-
-	@Column(name = "updatedAt")
-	@CreationTimestamp
-	private Date updatedAt;
-	
 }

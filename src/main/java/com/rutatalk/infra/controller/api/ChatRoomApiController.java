@@ -58,7 +58,7 @@ public class ChatRoomApiController {
 			){
 		
 		Map<String, Object> result = new HashMap<>();
-		ChatRoomEntity chatRoomEntity = ChatRoomEntity.builder().name(name).roomCode(roomCode).roomImageUrl(roomImageUrl).build();
+		ChatRoomEntity chatRoomEntity = ChatRoomEntity.builder().name(name)/*.roomCode(roomCode)*/.roomImageUrl(roomImageUrl).build();
 		log.info(chatRoomEntity.getId() + "/" + name + "chatroom id입니다 / chatroom 이름 입니다.");
 
 		// session 관련
