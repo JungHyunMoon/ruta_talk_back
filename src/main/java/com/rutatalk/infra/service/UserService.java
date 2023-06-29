@@ -20,6 +20,13 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	// session에서 userId 불러오기위한 과정 -추후 삭제
+	@Transactional(readOnly = true)
+	public UserEntity getUserByLoginId(String loginId) {
+		UserEntity user = userRepository.findByLoginId(loginId);
+		return user;
+	}
+	
 	@Transactional(readOnly = true)
 	public int getUserByLoginIdPassword(String loginId, String password) {
 		

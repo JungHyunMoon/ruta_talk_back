@@ -3,12 +3,15 @@ package com.rutatalk.infra.controller.api;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rutatalk.infra.entity.UserEntity;
 import com.rutatalk.infra.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -28,7 +31,7 @@ public class UserApiController {
 	private UserService userService;
 	
 	/**
-	 * 로그인 API
+	 * 로그인 API - session set 추후 삭제
 	 * @param loginId
 	 * @param password
 	 * @return
@@ -42,7 +45,9 @@ public class UserApiController {
 	@PostMapping(value = "/sign-in")
 	public Map<String, Object> signIn(
 			@ApiParam(value = "아이디", required = true, example = "user123") @RequestParam("loginId") String loginId,
-			@ApiParam(value = "비번", required = true, example = "password") @RequestParam("password") String password) {
+			@ApiParam(value = "비번", required = true, example = "password") @RequestParam("password") String password,
+			HttpSession session) {
+		
 		Map<String, Object> result = new HashMap<>();
 		
 		log.info(loginId + " Restconroller 로그인아이디 입니다.");
@@ -57,9 +62,28 @@ public class UserApiController {
 			result.put("code", 1100);
 			result.put("result", "유저를 찾을 수 없습니다.");
 		}
+		
+		/**
+		 * session 관련하여 추후 삭제
+		 */
+		UserEntity userentity = userService.getUserByLoginId(loginId);
+		session.setAttribute("userId", userentity.getId());
+		session.setAttribute("userLoginId", userentity.getLoginId());
+		/**
+		 * 세션 관련하여 추후 삭제
+		 */
+		
 		return result;
 	};
 	
+	/**
+	 * 회원가입 API
+	 * @param loginId
+	 * @param password
+	 * @param nickname
+	 * @param email
+	 * @return
+	 */
 	@ApiOperation(value = "signUp", notes = "회원가입 테스트")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "ok"),

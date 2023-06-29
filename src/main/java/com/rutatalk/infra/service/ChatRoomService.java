@@ -1,8 +1,6 @@
 package com.rutatalk.infra.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,7 @@ public class ChatRoomService {
 	@Autowired
 	private ChatRoomRepository chatRoomRepository;
 	
+	// 채팅방 생성
 	@Transactional
 	public int createChatRoom (ChatRoomEntity chatRoomEntity) {
 		
@@ -27,13 +26,15 @@ public class ChatRoomService {
 		
 	}
 	
+	// 채팅방 전체 반환
 	@Transactional(readOnly = true)
-	public List<ChatRoomEntity> findAllRoom(){
+	public List<ChatRoomEntity> selectListChatRoomById(Long chatRoomId){
 		// 채팅방 생성 순서 최근 순으로 반환
-		List<ChatRoomEntity> chatRoomEntityList = chatRoomRepository.findAllOrderByIdDesc();
+		List<ChatRoomEntity> chatRoomEntityList = chatRoomRepository.findAllById(chatRoomId);
 		return chatRoomEntityList;
 	}
 	
+	// 룸코드로 채팅방 있는지 확인
 	@Transactional(readOnly = true)
 	public ChatRoomEntity selectRoomById(Long roomCode) {
 		ChatRoomEntity roomInfo = chatRoomRepository.findByRoomCode(roomCode);
