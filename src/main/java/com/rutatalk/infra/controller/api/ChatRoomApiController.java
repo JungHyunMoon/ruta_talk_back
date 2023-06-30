@@ -38,7 +38,6 @@ public class ChatRoomApiController {
 	/**
 	 * 채팅방 초기 생성 API
 	 * @param name
-	 * @param roomCode
 	 * @param roomImageUrl
 	 * @param session
 	 * @return
@@ -58,15 +57,17 @@ public class ChatRoomApiController {
 		
 		Map<String, Object> result = new HashMap<>();
 		ChatRoomEntity chatRoomEntity = ChatRoomEntity.builder().name(name).roomImageUrl(roomImageUrl).build();
-		log.info(chatRoomEntity.getId() + "/" + name + "chatroom id입니다 / chatroom 이름 입니다.");
 
-		// session 관련
-		Long userId = (Long) session.getAttribute("userId");
-		ChatMemberEntity chatmemberBuild = ChatMemberEntity.builder().userId(userId).chatRoomId(chatRoomEntity.getId()).build();
-		chatMemberService.createChatMember(chatmemberBuild);
-		
 		int row = chatRoomService.createChatRoom(chatRoomEntity);
+		log.info(chatRoomEntity.getId() + "/ chatroom id입니다" + name + "/ chatroom 이름 입니다.");
 		if(row > 0) {
+			
+			// session 관련 & ChatMember DB에 내용 저장
+			Long userId = (Long) session.getAttribute("userId");
+			ChatMemberEntity chatmemberBuild = ChatMemberEntity.builder().userId(userId).chatRoomId(chatRoomEntity.getId()).build();
+			log.info(chatmemberBuild + "create들어가기 전 데이터");
+			chatMemberService.createChatMember(chatmemberBuild);
+			
 			result.put("code", 5000);
 			result.put("result", "채팅방 생성 되었습니다.");
 		} else {

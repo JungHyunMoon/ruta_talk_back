@@ -34,11 +34,4 @@ public class ChatRoomService {
 		return chatRoomEntityList;
 	}
 	
-	// 룸코드로 채팅방 있는지 확인
-	@Transactional(readOnly = true)
-	public ChatRoomEntity selectRoomById(Long roomCode) {
-		ChatRoomEntity roomInfo = chatRoomRepository.findByRoomCode(roomCode);
-		return roomInfo;
-	}
-	
 }

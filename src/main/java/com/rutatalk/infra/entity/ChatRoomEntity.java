@@ -16,14 +16,14 @@ import lombok.Data;
 import lombok.Getter;
 
 @Data
-@Entity
 @Getter
 @Builder
 @Table(name = "chat_room")
+@Entity
 public class ChatRoomEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name", nullable = false)

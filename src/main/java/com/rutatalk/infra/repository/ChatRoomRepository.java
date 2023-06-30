@@ -10,6 +10,4 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoomEntity, Long>{
 
 	public List<ChatRoomEntity> findAllById(Long chatRoomId);
 
-	public ChatRoomEntity findByRoomCode(Long roomCode);
-	
 }

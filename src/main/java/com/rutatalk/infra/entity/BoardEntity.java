@@ -21,7 +21,7 @@ import lombok.Getter;
 @Table(name="board")
 public class BoardEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name = "schduleId", nullable = false)
