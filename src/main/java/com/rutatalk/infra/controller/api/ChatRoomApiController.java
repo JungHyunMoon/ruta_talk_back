@@ -36,7 +36,7 @@ public class ChatRoomApiController {
 	private ChatMemberService chatMemberService;
 	
 	/**
-	 * 채팅방 생성 API
+	 * 채팅방 초기 생성 API
 	 * @param name
 	 * @param roomCode
 	 * @param roomImageUrl
@@ -52,13 +52,12 @@ public class ChatRoomApiController {
 	@PostMapping(value = "/room-creation")
 	public Map<String, Object> createChatRoom(
 			@ApiParam(value = "채팅방 이름", required = true, example = "test") @RequestParam("name") String name,
-			@ApiParam(value = "채팅방 코드", required = true, example = "1000") @RequestParam("roomCode") Long roomCode,
 			@ApiParam(value = "채팅방 이미지", required = false, example = "채팅방 이미지") @RequestParam(value = "roomImageUrl", required = false) String roomImageUrl,
 			HttpSession session
 			){
 		
 		Map<String, Object> result = new HashMap<>();
-		ChatRoomEntity chatRoomEntity = ChatRoomEntity.builder().name(name)/*.roomCode(roomCode)*/.roomImageUrl(roomImageUrl).build();
+		ChatRoomEntity chatRoomEntity = ChatRoomEntity.builder().name(name).roomImageUrl(roomImageUrl).build();
 		log.info(chatRoomEntity.getId() + "/" + name + "chatroom id입니다 / chatroom 이름 입니다.");
 
 		// session 관련

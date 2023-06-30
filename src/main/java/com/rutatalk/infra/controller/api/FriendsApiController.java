@@ -33,7 +33,13 @@ public class FriendsApiController {
 	
 	@Autowired
 	private FriendsService friendsService;
-
+	
+	/**
+	 * 친구 추가 API
+	 * @param loginId
+	 * @param session
+	 * @return
+	 */
 	@ApiOperation(value = "addFriend", notes = "친구추가 테스트")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "ok"),

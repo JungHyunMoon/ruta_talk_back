@@ -26,9 +26,6 @@ public class ChatRoomEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-//	@Column(name = "roomCode", nullable = false)
-//	private Long roomCode;
-
 	@Column(name = "name", nullable = false)
 	private String name;
 
