@@ -29,9 +29,9 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    // Claims에서 userName 꺼내기
+    // Claims에서 LoginId 꺼내기
     public static String getLoginId(String token, String secretKey) {
-        return extractClaims(token, secretKey).get("userName").toString();
+        return extractClaims(token, secretKey).get("loginId").toString();
     }
 
 

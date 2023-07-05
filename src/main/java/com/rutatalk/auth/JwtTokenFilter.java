@@ -82,16 +82,16 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        // Token에서 userName 꺼내기
-        String userLoginId = JwtTokenUtil.getLoginId(token, secretKey);
+        // Token에서 loginId 꺼내기
+        String loginId = JwtTokenUtil.getLoginId(token, secretKey);
         // userName으로 User 찾아오기
-        UserEntity loginUser = userService.getUserByLoginId(userLoginId);
+        UserEntity loginUser = userService.findUserByLoginId(loginId);
 
-//        log.info("role:{}", loginUser.getRole().name());
+        log.info("role:{}", loginUser.getRole().name());
 
         // 권한을 주거나 안주기
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                userLoginId, null, List.of(new SimpleGrantedAuthority(loginUser.getRole().name())));
+                loginUser.getLoginId(), null, List.of(new SimpleGrantedAuthority(loginUser.getRole().name())));
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         // 권한 부여
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);

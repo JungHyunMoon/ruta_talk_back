@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="navbar">
+    <button type="button"><img src="../../static/images/Category.png" alt=""></button>
+    <button type="button" onclick="location.href='/'"><img src="../../static/images/home.png" alt=""></button>
+    <div class="right">
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <button type="button"><img src="../../static/images/Group.png" alt=""></button>
+        </div>
+        <button type="button" class="re"><img src="../../static/images/Chat.png" alt=""></button>
+        <button type="button"><img src="../../static/images/Notification.png" alt=""></button>
+        <button type="button"><img src="../../static/images/Icon.png" alt=""></button>
+    </div>
+</header>
+</body>
+</html>

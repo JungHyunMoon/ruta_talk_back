@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header.html :: head}"/>
+<body>
+<script>
+    /*<![CDATA[*/
+    let msg = "[[${msg}]]"
+    /*]]>*/
+    if(msg !== ""){
+        alert(msg);
+    }
+</script>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="row">
+    <form class="offset-4 col-4 form-group" th:method="post" th:action="@{/users/login}" th:object="${userLoginRequest}" align="center">
+        <br/><br/>
+        <div>
+            <label th:for="loginId">LoginId : </label>
+            <input type="text" th:field="*{loginId}"/>
+        </div>
+        <br/>
+        <div>
+            <label th:for="password">Password : </label>
+            <input type="password" th:field="*{password}"/>
+        </div>
+        <br/><br/>
+        <div align="center">
+            <button class="btn body-btn" type="submit">로그인</button>
+        </div>
+        <div align="center">
+            <a href="/users/find_id" style="display: inline-block">
+                <p class="mt-5 mb-3 text-muted">아이디 찾기</p>
+            </a>
+            <a href="/users/find_pw" style="display: inline-block">
+                <p class="mt-5 mb-3 text-muted">비밀번호 찾기</p>
+            </a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

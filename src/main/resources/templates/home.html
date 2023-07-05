@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/header.html :: head}">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <title>Home</title>
 </head>
 <body>
+    <div th:insert="~{fragments/navbar :: navbar}"></div>
     <h1>home page</h1>
+    <button onclick="location.href='users/login'">login</button>
 </body>
 </html>

@@ -7,5 +7,5 @@ import com.rutatalk.infra.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	
 	UserEntity findByLoginId(String loginId);
-	
+	UserEntity findByRealName(String realName);
 }
