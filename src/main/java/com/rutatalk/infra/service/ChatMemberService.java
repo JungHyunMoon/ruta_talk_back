@@ -19,10 +19,29 @@ public class ChatMemberService {
 		chatMemberRepository.save(chatMemberEntity);
 	}
 	
+	public int addChatMembers(Long chatRoomId, List<Long> userIdList) {
+		int result = 0;
+		for (Long id : userIdList) {
+			ChatMemberEntity chatMeberEntity = ChatMemberEntity.builder().userId(id).chatRoomId(chatRoomId).build();
+			ChatMemberEntity addChatMember = chatMemberRepository.save(chatMeberEntity);
+			if (addChatMember != null) {
+				result++;
+			} 
+		}
+		if (result == userIdList.size()) {
+			return 1;
+		} else return 0;
+	}
+	
 	// 채팅방 정보 불러오기
 	public List<ChatMemberEntity> selectListChatMember(Long userId){
 		List<ChatMemberEntity> chatMemberList = chatMemberRepository.findAllById(userId);
 		return chatMemberList;
+	}
+	
+	public void deleteChatMember(Long chatRoomId, Long userId) {
+		ChatMemberEntity chatMeberEntity = ChatMemberEntity.builder().userId(userId).chatRoomId(chatRoomId).build();
+		chatMemberRepository.delete(chatMeberEntity);
 	}
 
 }
